@@ -1,0 +1,32 @@
+{
+  "name": "task-list",
+  "version": "1.0.0",
+  "description": "Task List",
+  "private": "true",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "prebuild": "rimraf build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alekseyvlivanov/task-list.git"
+  },
+  "keywords": [
+    "task list"
+  ],
+  "author": "Aleksey Ivanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alekseyvlivanov/task-list/issues"
+  },
+  "homepage": "https://github.com/alekseyvlivanov/task-list#readme",
+  "dependencies": {
+    "awsm.css": "^3.0.7"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "snowpack": "^3.0.0-rc.2",
+    "snowpack-plugin-optimize": "^0.5.0"
+  }
+}
