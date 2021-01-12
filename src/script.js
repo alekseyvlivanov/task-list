@@ -12,6 +12,8 @@ newTaskText.focus();
 
 function loadEventListeners() {
   newTaskForm.addEventListener('submit', addNewTask);
+  tasksList.addEventListener('click', removeTask);
+  clearTasksBtn.addEventListener('click', clearTasks);
 }
 
 function addNewTask(e) {
@@ -22,9 +24,36 @@ function addNewTask(e) {
   }
 
   const newTask = document.createElement('li');
-  newTask.append(document.createTextNode(newTaskText.value.trim()));
 
+  const text = document.createElement('span');
+  text.innerText = newTaskText.value.trim();
+
+  const link = document.createElement('a');
+  link.className = 'remove-task';
+  link.innerText = '×';
+  link.title = 'Remove task';
+
+  newTask.append(text);
+  newTask.append(link);
   tasksList.append(newTask);
 
   newTaskText.select();
+}
+
+function removeTask(e) {
+  if (e.target.classList.contains('remove-task')) {
+    if (confirm('Remove task?')) {
+      e.target.parentElement.remove();
+    }
+  }
+}
+
+function clearTasks(e) {
+  if (confirm('Remove all tasks?')) {
+    // tasksList.innerHTML = '';
+
+    while (tasksList.firstChild) {
+      tasksList.removeChild(tasksList.firstChild);
+    }
+  }
 }
