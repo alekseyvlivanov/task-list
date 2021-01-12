@@ -6,7 +6,30 @@
     <title>Task List</title>
   </head>
   <body>
-    <h1>Task List</h1>
+    <header>
+      <h1>Task List</h1>
+    </header>
+    <main>
+      <section>
+        <form id="new-task">
+          <h4>New Task</h4>
+          <fieldset>
+            <input id="new-task-text" type="text" placeholder="Text" />
+            <input type="submit" value="Add Task" />
+          </fieldset>
+        </form>
+      </section>
+      <section>
+        <form>
+          <h4>Tasks</h4>
+          <fieldset>
+            <ul id="tasks"></ul>
+            <input id="filter-tasks" type="text" placeholder="Filter" />
+            <input id="clear-tasks" type="button" value="Clear Tasks" />
+          </fieldset>
+        </form>
+      </section>
+    </main>
     <script src="script.js" type="module"></script>
   </body>
 </html>
