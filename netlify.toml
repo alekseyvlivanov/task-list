@@ -3,19 +3,19 @@
   publish = "build"
 
 [[redirects]]
-  from = "https://task-list-aleksey-vl-ivanov.netlify.app/*"
-  to = "https://task-list.aleksey-vl-ivanov.com/:splat"
+  from = "https://task-list-chessiah.netlify.app/*"
+  to = "https://task-list.chessiah.com/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://task-list-aleksey-vl-ivanov.netlify.app/*"
-  to = "https://task-list.aleksey-vl-ivanov.com/:splat"
+  from = "http://task-list-chessiah.netlify.app/*"
+  to = "https://task-list.chessiah.com/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://task-list.aleksey-vl-ivanov.com/*"
-  to = "https://task-list.aleksey-vl-ivanov.com/:splat"
+  from = "http://task-list.chessiah.com/*"
+  to = "https://task-list.chessiah.com/:splat"
   status = 301
   force = true
