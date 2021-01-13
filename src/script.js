@@ -43,6 +43,8 @@ function addNewTask(e) {
   tasksList.append(newTask);
 
   newTaskText.select();
+
+  filterTasks();
 }
 
 function removeTask(e) {
@@ -53,8 +55,8 @@ function removeTask(e) {
   }
 }
 
-function filterTasks(e) {
-  const filterText = e.target.value.trim().toLowerCase();
+function filterTasks() {
+  const filterText = filterTasksText.value.trim().toLowerCase();
 
   tasksList.querySelectorAll('li').forEach((task) => {
     task.style.display = task.firstChild.textContent
