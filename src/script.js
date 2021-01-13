@@ -12,11 +12,33 @@ loadEventListeners();
 newTaskText.focus();
 
 function loadEventListeners() {
+  document.addEventListener('DOMContentLoaded', getTasks);
   newTaskForm.addEventListener('submit', addNewTask);
   tasksForm.addEventListener('submit', (e) => e.preventDefault());
   tasksList.addEventListener('click', removeTask);
   filterTasksText.addEventListener('input', filterTasks);
   clearTasksBtn.addEventListener('click', clearTasks);
+}
+
+function getTasks() {
+  const lsTasks = localStorage.getItem('tasks');
+  const tasks = lsTasks ? JSON.parse(lsTasks) : [];
+
+  tasks.forEach((task) => {
+    const newTask = document.createElement('li');
+
+    const text = document.createElement('span');
+    text.innerText = task;
+
+    const link = document.createElement('a');
+    link.className = 'remove-task';
+    link.innerText = '×';
+    link.title = 'Remove task';
+
+    newTask.append(text);
+    newTask.append(link);
+    tasksList.append(newTask);
+  });
 }
 
 function addNewTask(e) {
@@ -45,12 +67,30 @@ function addNewTask(e) {
   newTaskText.select();
 
   filterTasks();
+
+  storeTaskInLocalStorage(taskText);
+}
+
+function storeTaskInLocalStorage(taskText) {
+  const lsTasks = localStorage.getItem('tasks');
+  const tasks = lsTasks ? JSON.parse(lsTasks) : [];
+
+  tasks.push(taskText);
+
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function removeTask(e) {
   if (e.target.classList.contains('remove-task')) {
     if (confirm('Remove task?')) {
       e.target.parentElement.remove();
+
+      const tasks = [];
+      tasksList.querySelectorAll('li').forEach((task) => {
+        tasks.push(task.firstChild.textContent);
+      });
+
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   }
 }
@@ -69,10 +109,10 @@ function filterTasks() {
 
 function clearTasks(e) {
   if (confirm('Remove all tasks?')) {
-    // tasksList.innerHTML = '';
-
     while (tasksList.firstChild) {
       tasksList.removeChild(tasksList.firstChild);
     }
+
+    localStorage.setItem('tasks', JSON.stringify([]));
   }
 }
